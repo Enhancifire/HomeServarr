@@ -10,7 +10,7 @@ services:
       - TZ=Asia/Kolkata
       - AUTO_UPDATE=true
     volumes:
-      - ./config/jackett:/config
+      - /home/fs144/Drives/Data/Docker/HomeServarr/config/jackett:/config
       - /home/fs144/Drives/Data/Torrents:/downloads
     ports:
       - 9117:9117
@@ -36,7 +36,7 @@ services:
       - PGID=1000
       - TZ=Asia/Kolkata
     volumes:
-      - ./config/prowlarr:/config
+      - /home/fs144/Drives/Data/Docker/HomeServar/config/prowlarr:/config
     ports:
       - 9696:9696
     restart: unless-stopped
@@ -50,7 +50,7 @@ services:
       - PGID=1000
       - TZ=Asia/Kolkata
     volumes:
-      - ./config/sonarr:/config
+      - /home/fs144/Drives/Data/Docker/HomeServar/config/sonarr:/config
       - /home/fs144/Drives/Data/Entertainment/Videos/Series:/tv #optional
       - /home/fs144/Drives/Data/Torrents:/downloads #optional
     ports:
@@ -65,7 +65,7 @@ services:
       - PGID=1000
       - TZ=Asia/Kolkata
     volumes:
-      - ./config/radarr:/config
+      - /home/fs144/Drives/Data/Docker/HomeServar/config/radarr:/config
       - /home/fs144/Drives/Data/Entertainment/Videos/Movies:/movies #optional
       - /home/fs144/Drives/Data/Torrents:/downloads #optional
     ports:
@@ -80,7 +80,7 @@ services:
       - PGID=1000
       - TZ=Europe/London
     volumes:
-      - ./config/readarr:/config
+      - /home/fs144/Drives/Data/Docker/HomeServar/config/readarr:/config
       - /home/fs144/Drives/Data/Entertainment/Literature/Books:/books #optional
       - /home/fs144/Drives/Data/Downloads:/downloads #optional
     ports:
@@ -98,7 +98,7 @@ services:
     ports:
       - 6969:6969
     volumes:
-      - ./config/whisparr:/config
+      - /home/fs144/Drives/Data/Docker/HomeServar/config/whisparr:/config
 
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:latest
@@ -109,8 +109,8 @@ services:
       - TZ=Etc/UTC
       - WEBUI_PORT=8080
     volumes:
-      - ./config/qbittorrent:/config
-      - /home/fs144/Drives/Data/Downloads:/downloads
+      - /home/fs144/Drives/Data/Docker/HomeServar/config/qbittorrent:/config
+      - /home/fs144/Drives/Data/Torrents:/downloads
     ports:
       - 8080:8080
       - 6881:6881
@@ -130,7 +130,7 @@ services:
       - JELLYFIN_PublishedServerUrl=192.168.0.5 #optional
 
     volumes:
-      - ./config/jellyfin:/config
+      - /home/fs144/Drives/Data/Docker/HomeServar/config/jellyfin:/config
       - /home/fs144/Drives/Data/Entertainment/Videos/Series:/data/tvshows
       - /home/fs144/Drives/Data/Entertainment/Videos/Movies:/data/movies
       - /home/fs144/Drives/Data/Entertainment/Literature/Books:/data/books
@@ -148,7 +148,7 @@ services:
   kavita:
     image: kizaing/kavita:latest
     volumes:
-      - ./config/kavita:/kavita/config
+      - /home/fs144/Drives/Data/Docker/HomeServar/config/kavita:/kavita/config
       - /home/fs144/Drives/Data/Entertainment/Literature/Manga:/manga
       - /home/fs144/Drives/Data/Entertainment/Literature/Books:/books
       - /home/fs144/Drives/Data/Entertainment/Literature/Light Novels:/lightnovels
