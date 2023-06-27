@@ -12,7 +12,8 @@ services:
     volumes:
       - ./config/jackett:/config
       - /home/fs144/Drives/Data/Torrents:/downloads
-    network_mode: "service:vpn"
+    ports:
+      - 9117:9117
     restart: unless-stopped
 
   # flaresolverr:
@@ -36,7 +37,8 @@ services:
       - TZ=Asia/Kolkata
     volumes:
       - ./config/prowlarr:/config
-    network_mode: "service:vpn"
+    ports:
+      - 9696:9696
     restart: unless-stopped
 
   # Media Gatherer and Downloaders
@@ -51,7 +53,8 @@ services:
       - ./config/sonarr:/config
       - /home/fs144/Drives/Data/Entertainment/Videos/Series:/tv #optional
       - /home/fs144/Drives/Data/Torrents:/downloads #optional
-    network_mode: "service:vpn"
+    ports:
+      - 8989:8989
     restart: unless-stopped
 
   radarr:
@@ -65,6 +68,8 @@ services:
       - ./config/radarr:/config
       - /home/fs144/Drives/Data/Entertainment/Videos/Movies:/movies #optional
       - /home/fs144/Drives/Data/Torrents:/downloads #optional
+    ports:
+      - 7878:7878
     restart: unless-stopped
 
   readarr:
@@ -78,6 +83,8 @@ services:
       - ./config/readarr:/config
       - /home/fs144/Drives/Data/Entertainment/Literature/Books:/books #optional
       - /home/fs144/Drives/Data/Downloads:/downloads #optional
+    ports:
+      - 8787:8787
     restart: unless-stopped
 
   whisparr:
@@ -88,6 +95,8 @@ services:
       - PGID=1000
       - UMASK=002
       - TZ=Asia/Kolkata
+    ports:
+      - 6969:6969
     volumes:
       - ./config/whisparr:/config
 
@@ -146,20 +155,3 @@ services:
     ports:
       - "5000:5000"
     restart: unless-stopped
-
-  # Putting Everything behind a VPN
-  vpn:
-    container_name: gluetun
-    image: qmcgaw/gluetun
-    cap_add:
-      - NET_ADMIN
-    environment:
-      - FREE_ONLY=on
-    ports:
-      - 9117:9117 # Jackett
-      - 9696:9696 # Prowlarr
-      - 8989:8989 # Sonarr
-      - 7878:7878 # Radarr
-      - 8787:8787 # Readarr
-      - 6969:6969 # Whisparr
-    restart: "unless-stopped"
