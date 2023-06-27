@@ -99,6 +99,9 @@ services:
       - 6969:6969
     volumes:
       - /home/fs144/Drives/Data/Docker/HomeServar/config/whisparr:/config
+      - /home/fs144/Drives/Data/Entertainment/homework:/data #optional
+      - /home/fs144/Drives/Data/Downloads:/downloads #optional
+
 
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:latest
