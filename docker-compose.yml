@@ -99,8 +99,8 @@ services:
       - 6969:6969
     volumes:
       - /home/fs144/Drives/Data/Docker/HomeServar/config/whisparr:/config
-      - /home/fs144/Drives/Data/Entertainment/homework:/data #optional
-      - /home/fs144/Drives/Data/Downloads:/downloads #optional
+      - /home/fs144/Drives/Data/Entertainment/Videos/.metadata:/data #optional
+      - /home/fs144/Drives/Data/Torrents:/downloads #optional
 
 
   qbittorrent:
@@ -139,6 +139,7 @@ services:
       - /home/fs144/Drives/Data/Entertainment/Literature/Books:/data/books
       - /home/fs144/Drives/Data/Entertainment/Literature/Manga:/data/manga
       - /home/fs144/Drives/Data/Entertainment/Literature/Light Novels:/data/ln
+      - /home/fs144/Drives/Data/Entertainment/Videos/.metadata:/metadata
 
     ports:
       - 8096:8096
