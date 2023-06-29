@@ -1,5 +1,14 @@
 version: "3.9"
 services:
+  homarr:
+    container_name: homarr
+    image: ghcr.io/ajnart/homarr:latest
+    restart: unless-stopped
+    volumes:
+      - /home/fs144/Drives/Data/Docker/HomeServarr/config/homarr:/app/data/configs
+      - /home/fs144/Drives/Data/Docker/HomeServarr/config/homarr-icons:/app/public/icons
+    ports:
+      - '7575:7575'
   # Indexers
   jackett:
     image: lscr.io/linuxserver/jackett
@@ -101,7 +110,6 @@ services:
       - /home/fs144/Drives/Data/Docker/HomeServar/config/whisparr:/config
       - /home/fs144/Drives/Data/Entertainment/Videos/.metadata:/data #optional
       - /home/fs144/Drives/Data/Torrents:/downloads #optional
-
 
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:latest
