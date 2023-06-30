@@ -7,6 +7,7 @@ services:
     volumes:
       - /home/fs144/Drives/Data/Docker/HomeServarr/config/homarr:/app/data/configs
       - /home/fs144/Drives/Data/Docker/HomeServarr/config/homarr-icons:/app/public/icons
+      - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - '7575:7575'
   # Indexers
