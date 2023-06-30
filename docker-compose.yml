@@ -159,6 +159,13 @@ services:
 
     restart: unless-stopped
 
+    runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [ gpu ]
+
   kavita:
     image: kizaing/kavita:latest
     volumes:
